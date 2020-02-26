@@ -58,7 +58,6 @@ void Vector2::setX(double x)
 
 	this->mag = sqrt(pow(this->x, 2) + pow(this->y, 2));
 
-	// fix logic for direction
 	if (mag == 0)
 		this->dir = 0;
 	else
@@ -76,7 +75,15 @@ void Vector2::setY(double y)
 
 	this->mag = sqrt(pow(this->x, 2) + pow(this->y, 2));
 
-	// fix logic for direction
+	if (mag == 0)
+		this->dir = 0;
+	else
+	{
+		if (this->y > 0)
+			this->dir = acos(this->x / this->mag);
+		else
+			this->dir = 2 * PI - acos(this->x / this->mag);
+	}
 
 }
 
@@ -100,6 +107,10 @@ void Vector2::setMag(double mag)
 void Vector2::setDir(double dir)
 {
 	this->dir = dir;
+	
+	this->x = this->mag * cos(dir);
+	this->y = this->mag * sin(dir);
+
 }
 
 // Returns 2-Dimensional Zero Vector
@@ -123,7 +134,8 @@ vector<Vector2> Vector2::identityMatrix()
 // Prints 2 Vector in Magnitude-Direction format
 void Vector2::printVector2MagnitudeDirection()
 {
-	cout << "Vector:\nMagnitude: " << this->mag << "\nDirection(rad): " << this->dir << endl;
+	cout << "(" << this->mag << ", " << this->dir << "rad)" << endl;
+//	cout << "Vector:\nMagnitude: " << this->mag << "\nDirection(rad): " << this->dir << endl;
 }
 
 // Prints Vector in (x,y) format

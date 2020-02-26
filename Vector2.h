@@ -9,19 +9,25 @@ using namespace std;
 
 class Vector2
 {
-public:
+private:
 	double x;
 	double y;
 	double mag;
 	double dir;
 
-	// Constructor to 2D Zero Vector
+public:
+	/*double x;
+	double y;
+	double mag;
+	double dir; */
+
+	// Constructor to initialize Vector2 object to a 2D Zero Vector
 	Vector2();
 
+	// Constructor to initialize Vector2 object to a 2D non-zero vector.
 	Vector2(double x, double y);
 
 	// Getter and Setter Functions
-
 	double getX();
 
 	double getY();
@@ -41,15 +47,15 @@ public:
 	// returns 2D Zero Vector
 	static Vector2 zeroVector();
 
-	// returns Identity Matrix for 2D Vectors
+	// Returns Identity Matrix for 2D Vectors
 	// For future project, make matrix class to work with Vector2D objects or MathVector
 	// Objects
 	static vector<Vector2> identityMatrix();
 
-	// Prints Vector in Magnitude-Direction Format
+	// Prints Vector in Magnitude-Direction Format (Polar Coordinates)
 	void printVector2MagnitudeDirection();
 
-	// Prints Vector in (x,y) format
+	// Prints Vector in (x,y) format (Cartesian Coordinates)
 	void printVector2();
 
 	// Prints Matrix of 2D Vectors. For future project, make matrix class to work with
